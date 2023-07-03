@@ -1,0 +1,56 @@
+version: '3.1'
+services:
+  
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: trabalho_final
+      MYSQL_USER: samuelSQL
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
+    ports:
+      - 3304:3306
+    expose:
+      - '3306'
+    networks:
+      - mysql_api
+
+  api:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    container_name: meu-mysql
+    ports:
+      - 3000:3000
+    depends_on:
+      - db 
+    networks:
+      - mysql_api
+    env_file:
+      - .env
+
+networks:
+  mysql_api:
+
+
+# version: '3'
+# services:
+#   app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8080:3306"  # Substitua a porta do host e a porta do contêiner conforme necessário
+#     depends_on:
+#       - db
+
+#   db:
+#     image: mysql:latest
+#     environment:
+#       MYSQL_ROOT_PASSWORD: root
+#       # MYSQL_ROOT_PASSWORD: 1234
+#       MYSQL_DATABASE: trabalho_final
+#       # MYSQL_USER: samuelSQL
+#       # MYSQL_PASSWORD: 1234

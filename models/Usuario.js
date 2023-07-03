@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt'
+// import bcrypt from 'bcrypt'
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../databases/conecta.js';
 
@@ -25,8 +25,8 @@ export const Usuario = sequelize.define('usuario', {
 // Hook (gancho) do Sequelize que é executado antes 
 // da inserção de um registro.
 // Faz a criptografia da senha e atribui o hash ao campo senha
-Usuario.beforeCreate(usuario => {
-  const salt = bcrypt.genSaltSync(12)
-  const hash = bcrypt.hashSync(usuario.senha, salt)
-  usuario.senha = hash  
-});
+// Usuario.beforeCreate(usuario => {
+//   const salt = bcrypt.genSaltSync(12)
+//   const hash = bcrypt.hashSync(usuario.senha, salt)
+//   usuario.senha = hash  
+// });
