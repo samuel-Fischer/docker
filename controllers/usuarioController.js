@@ -1,4 +1,4 @@
-// import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt'
 import { Usuario } from '../models/Usuario.js'
 import { Log } from "../models/Log.js";
 

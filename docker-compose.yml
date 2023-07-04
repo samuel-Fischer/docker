@@ -28,30 +28,7 @@ services:
       - db 
     networks:
       - mysql_api
-    env_file:
-      - .env
-    command: sh -c 'sleep 5 && npx nodemon app.js'
+    command: sh -c 'until nc -z db 3306; do sleep 1; done; sleep 5 && npx nodemon app.js'
 
 networks:
   mysql_api:
-
-
-# version: '3'
-# services:
-#   app:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile
-#     ports:
-#       - "8080:3306"  # Substitua a porta do host e a porta do contêiner conforme necessário
-#     depends_on:
-#       - db
-
-#   db:
-#     image: mysql:latest
-#     environment:
-#       MYSQL_ROOT_PASSWORD: root
-#       # MYSQL_ROOT_PASSWORD: 1234
-#       MYSQL_DATABASE: trabalho_final
-#       # MYSQL_USER: samuelSQL
-#       # MYSQL_PASSWORD: 1234
