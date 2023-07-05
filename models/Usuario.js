@@ -1,4 +1,4 @@
-// import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt'
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../databases/conecta.js';
 
